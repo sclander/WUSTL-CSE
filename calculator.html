@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<title>Javascript Calculator</title>
+<script type="text/javascript">
+
+
+
+//CALCULATOR JAVASCRIPT
+document.addEventListener("DOMContentLoaded",function(event){
+
+document.getElementById("num1").addEventListener("keyup",calc,false);
+document.getElementById("num2").addEventListener("keyup",calc,false);
+
+for (var i=0;i<4; i++){
+	document.getElementsByName("oper")[i].addEventListener("click",calc,false);
+}
+
+});
+
+
+function my_alert(){
+    alert(getOper());
+}
+
+function calc(){
+	var num1 = document.getElementById("num1").value;
+	var num2 = document.getElementById("num2").value;
+	var oper = getOper();
+		
+	document.getElementById("operView").innerHTML = oper;
+		
+	switch(oper){
+		case '+': var ans = parseFloat(num1)+parseFloat(num2);
+		break;
+		case '-': var ans = parseFloat(num1)-parseFloat(num2);
+		break;
+		case '*': var ans = parseFloat(num1)*parseFloat(num2);
+		break;
+		case '/': var ans = parseFloat(num1)/parseFloat(num2);
+		break;
+	}
+	document.getElementById("ans").innerHTML = ans;
+
+}
+
+function getOper(){
+	for (var i=0;i<4; i++){
+		if(document.getElementsByName("oper")[i].checked){
+		var oper = document.getElementsByName("oper")[i].value;
+ 		return oper;
+		}
+	}
+}	
+</script>
+</head>
+<body>
+    <form>
+        <input type="text" id="num1" /> <b id = "operView"> </b>
+        <input type="text" id="num2" /> <b> = </b>
+        <b id="ans"></b> 
+        <br/>+
+        <input type="radio" name="oper" value="+" /><br/>-
+        <input type="radio" name="oper" value="-" /><br/>*
+        <input type="radio" name="oper" value="*" /><br/>/
+        <input type="radio" name="oper" value="/" />
+     </form> 
+</body>
+</html>
